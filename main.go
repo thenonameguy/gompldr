@@ -39,7 +39,7 @@ func Upload(file string) string {
 		log.Fatalln(err)
 	}
 	content, _ := ioutil.ReadAll(resp.Body)
-	regex := regexp.MustCompile("href=\"v([A-Za-z0-9]+)\"")
+	regex := regexp.MustCompile("href=\"v(\\w+)\"")
 	url := regex.FindString(string(content))
 	if len(url) < 7 {
 		log.Fatalln("Error: Ompldr limited your uploads for a while")
