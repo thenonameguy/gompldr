@@ -3,6 +3,10 @@ gompldr
 
 Ompldr upload application written in Go
 
+Dependencies:
+- go
+- xclip
+
 Install
 =======
     $ go get github.com/thenonameguy/gompldr
