@@ -72,10 +72,9 @@ func postFile(filename string, target_url string) (*http.Response, error) {
 		return nil, err
 	}
 	defer file.Close()
+	io.Copy(fb, file)
 
-	_, err = io.Copy(fb, file)
 	body_writer.Close()
-
 	req, err := http.NewRequest("POST", target_url, body_buf)
 	if err != nil {
 		return nil, err
