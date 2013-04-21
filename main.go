@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"strings"
 	"regexp"
 )
 
@@ -48,11 +49,9 @@ func Upload(file string) string {
 }
 
 func write2clipboard(str string) {
-	echo := exec.Command("echo", str)
 	xclip := exec.Command("xclip", "-selection", "clipboard")
-	xclip.Stdin, _ = echo.StdoutPipe()
+	xclip.Stdin= strings.NewReader(str)
 	xclip.Start()
-	echo.Run()
 	xclip.Wait()
 	fmt.Printf("\"%s\" copied to clipboard\n", str)
 }
