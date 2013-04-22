@@ -29,7 +29,7 @@ func main() {
 		} else {
 			clipboard += url + "\n"
 		}
-		fmt.Println("Uploaded:", url)
+		fmt.Printf("Uploaded %s to %s\n",os.Args[i],url)
 	}
 	write2clipboard(clipboard)
 }
