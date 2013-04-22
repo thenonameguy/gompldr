@@ -10,8 +10,8 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
-	"strings"
 	"regexp"
+	"strings"
 )
 
 const ompldr string = "http://ompldr.org/"
@@ -29,7 +29,7 @@ func main() {
 		} else {
 			clipboard += url + "\n"
 		}
-		fmt.Printf("Uploaded %s to %s\n",os.Args[i],url)
+		fmt.Printf("Uploaded %s to %s\n", os.Args[i], url)
 	}
 	write2clipboard(clipboard)
 }
@@ -50,7 +50,7 @@ func Upload(file string) string {
 
 func write2clipboard(str string) {
 	xclip := exec.Command("xclip", "-selection", "clipboard")
-	xclip.Stdin= strings.NewReader(str)
+	xclip.Stdin = strings.NewReader(str)
 	xclip.Start()
 	xclip.Wait()
 	fmt.Printf("\"%s\" copied to clipboard\n", str)
